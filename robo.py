@@ -110,8 +110,7 @@ def facing():
         return "x_neg"
     if face_mem[-1] == "EAST":
         return "x_pos"
-    else:
-        return None
+    return None
 
 
 def move():

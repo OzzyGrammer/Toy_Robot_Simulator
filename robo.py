@@ -63,27 +63,28 @@ def command_valid(input_text):
 
 
 def place_validation(input_text):
-    """Is the input place a valid position for the robot"""
-    x = ""
-    y = ""
-    f = ""
-    place = input_text[:5].upper()
+    """Is the input place a valid position for the robot?"""   
+    place_txt = input_text[:5].upper()
     Faces = ["NORTH", "SOUTH", "EAST", "WEST"]
     f_valid = False
     place_txt_valid = False
     xyf_txt_valid = False
+    
     if command_valid(input_text) is False:
         x = slice_x(input_text)
         y = slice_y(input_text)
         f = slice_f(input_text)
+        xy_int = isinstance(x, int) is True and isinstance(x, int)
 
     if f in Faces:
 
         f_valid = True
 
-    if (isinstance(x, int)) is True and (isinstance(x, int)) is True and f_valid is True:
+    
+    if xy_int is True and f_valid is True and on_table(x, y) is True:
         xyf_txt_valid = True
-    if place == "PLACE" and xyf_txt_valid is True:
+        
+    if place_txt == "PLACE" and xyf_txt_valid is True:
         place_txt_valid = True
     return place_txt_valid
 
@@ -103,11 +104,11 @@ def facing():
     """Where is the robot facing"""
     if face_mem[-1] == "NORTH":
         return "y_pos"
-    elif face_mem[-1] == "SOUTH":
+    if face_mem[-1] == "SOUTH":
         return "y_neg"
-    elif face_mem[-1] == "WEST":
+    if face_mem[-1] == "WEST":
         return "x_neg"
-    elif face_mem[-1] == "EAST":
+    if face_mem[-1] == "EAST":
         return "x_pos"
     else:
         return None
@@ -151,11 +152,11 @@ def right():
     """Execute command right"""
     if face_mem[-1] == "NORTH":
         face_mem.append("EAST")
-    elif face_mem[-1] == "WEST":
+    if face_mem[-1] == "WEST":
         face_mem.append("NORTH")
-    elif face_mem[-1] == "SOUTH":
+    if face_mem[-1] == "SOUTH":
         face_mem.append("WEST")
-    elif face_mem[-1] == "EAST":
+    if face_mem[-1] == "EAST":
         face_mem.append("SOUTH")
 
 
@@ -178,4 +179,4 @@ while True:
         if command == "REPORT":
             print(report())
     if command == "Q":
-            break
+        break

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Toy Robot Simulator"""
 other_commands = ["MOVE", "LEFT", "RIGHT", "REPORT"]
 Faces = ["NORTH", "SOUTH", "EAST", "WEST"]
@@ -61,29 +62,23 @@ def command_valid(input_text):
         is_valid = True
     return is_valid
 
-
+    
 def place_validation(input_text):
     """Is the input place a valid position for the robot?"""   
     place_txt = input_text[:5].upper()
     Faces = ["NORTH", "SOUTH", "EAST", "WEST"]
     f_valid = False
     place_txt_valid = False
-    xyf_txt_valid = False
-    
+    xyf_txt_valid = False 
     if command_valid(input_text) is False:
         x = slice_x(input_text)
         y = slice_y(input_text)
         f = slice_f(input_text)
         xy_int = isinstance(x, int) is True and isinstance(x, int)
-
     if f in Faces:
-
         f_valid = True
-
-    
     if xy_int is True and f_valid is True and on_table(x, y) is True:
-        xyf_txt_valid = True
-        
+        xyf_txt_valid = True   
     if place_txt == "PLACE" and xyf_txt_valid is True:
         place_txt_valid = True
     return place_txt_valid
@@ -178,5 +173,5 @@ while True:
             right()
         if command == "REPORT":
             print(report())
-    if command == "Q":
+    elif command == "Q":
         break

@@ -66,7 +66,6 @@ def command_valid(input_text):
 def place_validation(input_text):
     """Is the input place a valid position for the robot?"""   
     place_txt = input_text[:5].upper()
-    Faces = ["NORTH", "SOUTH", "EAST", "WEST"]
     f_valid = False
     place_txt_valid = False
     xyf_txt_valid = False 
